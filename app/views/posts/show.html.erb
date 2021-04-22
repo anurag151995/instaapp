@@ -1,0 +1,30 @@
+<div class="card my-5">
+  <div class="card-body">
+    <p id="notice"><%= notice %></p>
+
+    <h1 class="text-center"><%= @post.title %></h1>
+    <hr >
+    <div class="my-4">
+      <%= simple_format(@post.body) %>
+    </div>
+
+    <%if @post.main_image.present? %>
+      <%= image_tag @post.main_image %>
+    <%end%>
+    <%= link_to 'Follow', posts_path, class: 'btn btn-info mr-2'%>
+  </div>
+    <%= link_to 'Back', posts_path, class: 'btn btn-light'%>
+</div>
+<div class="card my-1">
+  <div class="card-body">
+    <p class="font-weight-bold">Comments</p>
+    <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<%= render @post.comments %>
