@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 2021_04_22_105130) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followee_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.string "name"
     t.integer "likeable_id"
